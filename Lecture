@@ -1,0 +1,46 @@
+Hello and "Welcome!" to my presentation on a unique implementation of the Fibonacci Sequence using an iterative algorithm that differs from the typical implementation of the recursive statements. The algorithm is the most important aspect of understanding the implications of this alternative implementation, so I will dedicate the beginning of my lecture to explaining its implementation.
+
+Imagine we have a list of three integers, 0, 1, 1. The iterative process is to take the first n of this list and sum the values, then replace the smallest integer of the list with this sum, then sort. The length of n is defined as the "scoop", and it is a negative number in that it is the length of the list minus the scoop. So for a scoop of -1 and a list of length 3, as displayed, the number of values summed is the first and second values of the list, as 3 - 1 is 2. 
+
+So for the first iteration, we have a list of 0, 1, 1. Since the scoop is minus one, we take 3 - 1 or the first two numbers.  zero plus one is 1, and we replace the smallest integer in the list with this value one, then sort. So in the second iteration, the list is [1, 1, 1].  For the third iteration, the smallest two numbers added together is one plus one or two, and we replace the left-most (or smallest) number One with Two, then sort. The two moves to the right most place after sorting, so the second iteration is [1, 1, 2].
+
+In the next iteration, the two left-most numbers, 1 and 1, are added to two, and this value replaces the smallest value in the list, or the left most one. Then we sort. The next iteration then becomes [1, 2, 2].
+
+In the next iteration, the two left-most numbers, 1 and 2, are summed to make three, then replaces the smallest value of the list, the one, and then is sorted. So the next iteration is [2, 2, 3].
+
+This iterative process can go on for as long as we like, and through the power of computers we can even analyze the twenty thousandth iteration in no time at all.  The reason we want to evaluate this process is that we can determine the base of growth of this sequence by dividing the last number in the list of a certain iteration by the last number in the list of the previous iteration. This number is the base of growth of the recursive sequence. If we were to graph the right most numbers on a number line, the graph would be equivalent to the curve created by y = (base)^x.
+
+Here we see the base of our [0, 1, 1] list of scoop minus one is 1.325. That means the values in the right most slot of the series is growing at a rate of y = 1.325^x. This number is not significant, but many people are familiar with the base of growth of the golden ratio, phi, or 1.618.
+
+In fact, we can simulate this base of growth by having a seed of [0, 1] and a scoop of zero. That is, the length of the list minus 0 is two, so we sum the first two numbers of the list and replace the smallest number with that sum, then sort. This is a vanilla implementation of the Fibonacci Sequence, and the right most numbers in the series are the familiar fibonacci numbers.
+
+But we can find the Fibonacci Numbers in something even close to our original series of [0, 1, 1] with a scoop of minus one.
+
+If we run the sequencing on a list of increasing length, that is a length of two, then three, then four, then five, and fill in the individual numbers of these list with increasing powers of two, we actually find that the lists of scoop minus one are converging to phi.
+
+So here's a list of length two, and since the scoop is minus one, it never departs from zero. 
+
+Here's the list of length three, which is our original list of [0, 1, 1]. This, as mentioned, has a base of growth of 1.325.
+
+The list of length four starts with [0, 1, 1, 2] and has a base of growth of 1.46591.
+
+As we expand the list one by one, our base of growth grows in relative value but, as this graph demonstrates, quickly converges to a value. You'll notice that around the list of length twelve, the base of growth is an approximation of phi. That is to say, as we increase the length of the list, we are closer and closer approximating phi in the ultimate base of growth.
+
+If we change the scoop to negative two, the base of growth converges to 1.46657. This number might not be familiar to you, but this is the base of growth for the "super" golden ratio. I will talk more about this number in a few minutes.
+
+If we change the scoop to negative three, the base of growth then converges to 1.3804. This is also a significant base of growth, but the point I want to emphasize here is that as we extend the length of the list to thousands of places, we are increasing the precision on a base of growth that depends on the scoop size.
+
+
+So the logical next step was to plot the scoop size versus the base of growth. That is, take a scoop of 0, then -1, then -2, then -3, then -4, etc. and plot the base of growth when the list is extended out to a length of thousands of slots. Looking at the series, there are the previously mentioned numbers: phi, or 1.618, the super golden ratio, or 1.46657, and so forth.
+
+My goal was to discover the significance of these numbers, as the glaring presence of the golden ratio made it clear these numbers were important. 
+
+It turns out that these numbers are the characteristic equations of related Fibonacci sequence. The characteristic equation is the root of an equation, here very simply an increasing number of x^n - x^(n-1) - 1 = zero. The root of this equation is the base of growth of the related Fibonacci Sequence.
+
+Here I want to point out the names of the first few bases of growth. With a scoop of minus one is phi, with a scoop of minus two we get the supergolden ratio, with a scoop of minus three we get the second Pisot number, and with a scoop of minus four we get the plastic number. These numbers are nothing new and have been known for centuries.
+
+Each characteristic equation is associated with a recursive Fibonacci Sequence. Here is the listing of recursive statements with each of the roots of the characteristic equation. You'll notice the Fibonacci series simply increase the first F of N minus X, with the second term always being F of N.
+
+That is to say, when the rules of the Slotted Fibonacci algorithm are implemented in lists of lengths of thousands of slots, various implementations of the Fibonacci Sequnce emerge. This is expected as the implementation of the algorithm was inspired by the Fibonacci Sequence, but diverged by its unique rules of adding and replacing and sorting.
+
+If we plot the roots of the characteristic equations, we find they match the base of growth of our algorithm. If we plot the base of growth of the recursive implementation, we expectedly see it also matches our algorithm. That is to say, under the rules of our algorithm, we have the series of Fibonacci numbers minus F of n minus one.
